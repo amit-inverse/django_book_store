@@ -10,3 +10,9 @@ python manage.py shell
 >>> lord_of_the_rings = Book(title="Lord of the Rings", rating=4)
 >>> lord_of_the_rings.save()
 ```
+
+### Geting All Entries
+```
+>>> Book.objects.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>]>
+```

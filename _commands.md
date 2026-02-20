@@ -50,3 +50,9 @@ False
 >>> Book.objects.all()
 <QuerySet [<Book: Lord of the Rings (4)>]>
 ```
+
+### Create instead of save
+```
+Book.objects.create(title="Harry Potter 1", rating=5, author="J.K. Rowling", is_bestselling=True)
+Book.objects.create(title="Random", rating=2, author="Random", is_bestselling=False)
+```

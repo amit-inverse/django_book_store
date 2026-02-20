@@ -41,3 +41,12 @@ False
 >>> Book.objects.all()[1].author
 'J.R.R. Tolkien'
 ```
+
+### Deleting Data
+```
+>>> harry_potter = Book.objects.all()[0]
+>>> harry_potter.delete()
+(1, {'book_outlet.Book': 1})
+>>> Book.objects.all()
+<QuerySet [<Book: Lord of the Rings (4)>]>
+```

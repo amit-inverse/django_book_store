@@ -67,4 +67,14 @@ Book.objects.get(is_bestselling=True)
 -- can return multiple results
 Book.objects.filter(is_bestselling=True)
 Book.objects.filter(rating__lte=4)
+Book.objects.filter(rating__lte=4, title__contains="Random")
+```
+
+### 'or' Condition
+```
+>>> from django.db.models import Q
+>>> Book.objects.filter(Q(rating__lt=3) | Q(is_bestselling=True))
+<QuerySet [<Book: Lord of the Rings (4)>, <Book: Harry Potter 1 (5)>, <Book: Random (2)>]>
+>>> Book.objects.filter(Q(rating__lt=3) | Q(is_bestselling=True), author="J.K. Rowling")
+<QuerySet [<Book: Harry Potter 1 (5)>]>
 ```

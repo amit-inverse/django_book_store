@@ -78,3 +78,13 @@ Book.objects.filter(rating__lte=4, title__contains="Random")
 >>> Book.objects.filter(Q(rating__lt=3) | Q(is_bestselling=True), author="J.K. Rowling")
 <QuerySet [<Book: Harry Potter 1 (5)>]>
 ```
+
+### Query Performance
+```
+>>> bestsellers = Book.objects.filter(is_bestselling=True)
+>>> amazing_bestsellers = bestsellers.filter(rating__gt=4)
+>>> print(bestsellers)
+<QuerySet [<Book: Lord of the Rings (4)>, <Book: Harry Potter 1 (5)>]>
+>>> print(amazing_bestsellers)
+<QuerySet [<Book: Harry Potter 1 (5)>]>
+```

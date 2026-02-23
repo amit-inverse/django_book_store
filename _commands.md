@@ -142,3 +142,14 @@ rk")
 >>> Address.objects.all()[0].author.first_name
 'J.K.'
 ```
+
+```
+>>> from book_outlet.models import Country, Book
+>>> Book.objects.all()
+>>> germeny = Country(name="Germeny", code="DE")
+>>> germeny.save()
+>>> hp1 = Book.objects.all()[0]
+>>> hp1.published_country.add(germeny)
+>>> ger = Country.objects.all()[0]
+>>> ger.book_set.all()
+```

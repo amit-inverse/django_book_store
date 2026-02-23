@@ -53,21 +53,21 @@ False
 
 ### Create instead of save
 ```
-Book.objects.create(title="Harry Potter 1", rating=5, author="J.K. Rowling", is_bestselling=True)
-Book.objects.create(title="Random", rating=2, author="Random", is_bestselling=False)
+>>> Book.objects.create(title="Harry Potter 1", rating=5, author="J.K. Rowling", is_bestselling=True)
+>>> Book.objects.create(title="Random", rating=2, author="Random", is_bestselling=False)
 ```
 
 ### Querying and filtering
 ```
 -- only returns one result || error
-Book.objects.get(id=2)
-Book.objects.get(rating=5)
-Book.objects.get(is_bestselling=True)
+>>> Book.objects.get(id=2)
+>>> Book.objects.get(rating=5)
+>>> Book.objects.get(is_bestselling=True)
 
 -- can return multiple results
-Book.objects.filter(is_bestselling=True)
-Book.objects.filter(rating__lte=4)
-Book.objects.filter(rating__lte=4, title__contains="Random")
+>>> Book.objects.filter(is_bestselling=True)
+>>> Book.objects.filter(rating__lte=4)
+>>> Book.objects.filter(rating__lte=4, title__contains="Random")
 ```
 
 ### 'or' Condition
@@ -95,29 +95,29 @@ python manage.py createsuperuser
 
 ```
 python manage.py shell
-from book_outlet.models import Book
-jkrowling = Author(first_name="J.K.", last_name="Rowling")
-jkrowling.save()
-Author.objects.all()
-Author.objects.all()[0].first_name
-hp1 = Book(title="Harry Potter 1", rating=5, is_bestselling=True, slug="harry-potter-1", author=jkrowling)
-hp1.save()
-Book.objects.all()
-harrypotter = Book.objects.get(title="Harry Potter 1")
-harrypotter.author
-harrypotter.author.first_name
+>>> from book_outlet.models import Book
+>>> jkrowling = Author(first_name="J.K.", last_name="Rowling")
+>>> jkrowling.save()
+>>> Author.objects.all()
+>>> Author.objects.all()[0].first_name
+>>> hp1 = Book(title="Harry Potter 1", rating=5, is_bestselling=True, slug="harry-potter-1", author=jkrowling)
+>>> hp1.save()
+>>> Book.objects.all()
+>>> harrypotter = Book.objects.get(title="Harry Potter 1")
+>>> harrypotter.author
+>>> harrypotter.author.first_name
 ```
 
 ```
-books_by_rowling = Book.objects.filter(author__last_name="Rowling")
-books_by_rowling
-books_by_rowling = Book.objects.filter(author__last_name__contains="ling")
-books_by_rowling
+>>> books_by_rowling = Book.objects.filter(author__last_name="Rowling")
+>>> books_by_rowling
+>>> books_by_rowling = Book.objects.filter(author__last_name__contains="ling")
+>>> books_by_rowling
 
-jk = Author.objects.get(first_name="J.K.")
-jk
-jk.book_set
-jk.book_set.all()
+>>> jk = Author.objects.get(first_name="J.K.")
+>>> jk
+>>> jk.book_set
+>>> jk.book_set.all()
 
 >>> from book_outlet.models import Book, Author
 >>> jkr = Author.objects.get(first_name="J.K.")

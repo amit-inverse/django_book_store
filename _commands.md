@@ -98,4 +98,12 @@ python manage.py shell
 from book_outlet.models import Book
 jkrowling = Author(first_name="J.K.", last_name="Rowling")
 jkrowling.save()
+Author.objects.all()
+Author.objects.all()[0].first_name
+hp1 = Book(title="Harry Potter 1", rating=5, is_bestselling=True, slug="harry-potter-1", author=jkrowling)
+hp1.save()
+Book.objects.all()
+harrypotter = Book.objects.get(title="Harry Potter 1")
+harrypotter.author
+harrypotter.author.first_name
 ```

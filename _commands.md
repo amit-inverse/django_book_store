@@ -92,3 +92,10 @@ Book.objects.filter(rating__lte=4, title__contains="Random")
 ```
 python manage.py createsuperuser
 ```
+
+```
+python manage.py shell
+from book_outlet.models import Book
+jkrowling = Author(first_name="J.K.", last_name="Rowling")
+jkrowling.save()
+```

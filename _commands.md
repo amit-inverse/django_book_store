@@ -126,3 +126,19 @@ python manage.py shell
 >>> jkr.books.get(title="Harry Potter 1")
 <Book: Harry Potter 1 (5)>
 ```
+
+```
+>>> from book_outlet.models import Author, Address, Book
+>>> Author.objects.all()
+<QuerySet [<Author: J.K. Rowling>]>
+>>> addr1 = Address(street="Some Street", postal_code="12345", city="London")
+>>> addr2 = Address(street="Another Street", postal_code="11122", city="New Yo
+rk")
+>>> addr1.save()
+>>> addr2.save()
+>>> jkr = Author.objects.get(first_name="J.K.")
+>>> jkr.address = addr1
+>>> jkr.save()
+>>> Address.objects.all()[0].author.first_name
+'J.K.'
+```

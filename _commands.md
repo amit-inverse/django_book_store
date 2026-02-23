@@ -88,3 +88,7 @@ Book.objects.filter(rating__lte=4, title__contains="Random")
 >>> print(amazing_bestsellers)
 <QuerySet [<Book: Harry Potter 1 (5)>]>
 ```
+
+```
+python manage.py createsuperuser
+```

@@ -107,3 +107,22 @@ harrypotter = Book.objects.get(title="Harry Potter 1")
 harrypotter.author
 harrypotter.author.first_name
 ```
+
+```
+books_by_rowling = Book.objects.filter(author__last_name="Rowling")
+books_by_rowling
+books_by_rowling = Book.objects.filter(author__last_name__contains="ling")
+books_by_rowling
+
+jk = Author.objects.get(first_name="J.K.")
+jk
+jk.book_set
+jk.book_set.all()
+
+>>> from book_outlet.models import Book, Author
+>>> jkr = Author.objects.get(first_name="J.K.")
+>>> jkr.books.all()
+<QuerySet [<Book: Harry Potter 1 (5)>]>
+>>> jkr.books.get(title="Harry Potter 1")
+<Book: Harry Potter 1 (5)>
+```
